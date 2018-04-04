@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerMovement : Movement {
     
     public float movementSpeed = 5.0f;
-    private Vector2Int direction = new Vector2Int(0,-1);
     
     private AttackBehavior attackBehavior;
 
@@ -16,11 +15,13 @@ public class PlayerMovement : Movement {
 	void Start () {        
         attackBehavior = GetComponent<AttackBehavior>();
 
-        attackBehavior.SpawnWeapon(direction);
     }
 
     // Update is called once per frame
 	void Update () {
-        Move(movementSpeed, Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+		Move (movementSpeed, Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
+		if (Input.GetKeyDown ("space")) {
+			attackBehavior.SpawnWeapon (direction);
+		}
 	}
 }
