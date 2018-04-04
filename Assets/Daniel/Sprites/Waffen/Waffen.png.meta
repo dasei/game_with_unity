@@ -7,6 +7,8 @@ TextureImporter:
     21300000: Waffen_0
     21300002: Waffen_1
     21300004: Waffen_2
+    21300006: Waffen_3
+    21300008: Waffen_5
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -98,7 +100,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 112
         width: 16
         height: 16
       alignment: 7
@@ -112,7 +114,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 4
+        y: 100
         width: 16
         height: 28
       alignment: 7
@@ -125,8 +127,36 @@ TextureImporter:
       name: Waffen_2
       rect:
         serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Waffen_3
+      rect:
+        serializedVersion: 2
         x: 0
-        y: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Waffen_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
         width: 16
         height: 16
       alignment: 0
