@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AttackBehavior)), RequireComponent(typeof(Entity))]
-public class PlayerMovement : Movement {
+[RequireComponent(typeof(AttackBehavior))]
+public class Movement_Player : Movement {
     
     private AttackBehavior attackBehavior;
     private Entity entityScript;
@@ -18,16 +18,16 @@ public class PlayerMovement : Movement {
         entityScript = GetComponent<Entity>();
     }
 
-    // Update is called once per frame
-	void Update () {
-		velocity = (new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))).normalized;		
+    public override void PerformMovement()
+    {
+		velocity = (new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))).normalized;
 
         if (Input.GetKeyDown ("space")) {
 			attackBehavior.SpawnWeapon (direction);
-		}
-	}
+		}        
+    }
 
 	void FixedUpdate(){
-		Move (entityScript.movementSpeed, velocity.x, velocity.y);
+		Move (velocity.x, velocity.y, true);
 	}
 }

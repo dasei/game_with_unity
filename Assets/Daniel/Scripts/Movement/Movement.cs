@@ -3,19 +3,35 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class Movement : MonoBehaviour {
+[RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Entity))]
+abstract public class Movement : MonoBehaviour {
 
 
+    private Entity entity;
     private new Rigidbody2D rigidbody;
 	protected Vector2 direction = new Vector2(0, -1);
 	private Vector2 preferredDirection = new Vector2(0,0);
 	public bool moveAllowed = true;
 
-    // Update is called once per frame
-    protected void Move(float speed, float directionX, float directionY) {        
+    abstract public void PerformMovement();
+
+    //Diese Funktion muss genau einmal pro Frame aufgerufen werden!!!!!!11elf
+    protected void Move(float directionX, float directionY, bool addKnockback){
+        if (this.entity == null)
+            entity = GetComponent<Entity>();
+
+        this.Move(entity.movementSpeed, directionX, directionY, addKnockback);
+    }
+
+    //Diese Funktion muss genau einmal pro Frame aufgerufen werden!!!!!!11elf
+    protected void Move(float speed, float directionX, float directionY, bool addKnockback) {
+
+        //Debug.Log("moving " + this.GetType().Name + " by: " + directionX + ", " + directionY);
+
         if(rigidbody == null)
             rigidbody = GetComponent<Rigidbody2D>();
+
+        Vector2 positionTotal = new Vector2(rigidbody.position.x, rigidbody.position.y);
 		
 		//Only Move if you are currently allowed to
 		if (moveAllowed) {
@@ -50,9 +66,41 @@ public class Movement : MonoBehaviour {
 				direction = preferredDirection;
 			}
 
-			//Move the Player
-			rigidbody.MovePosition(rigidbody.position + (new Vector2 (directionX, directionY)) * speed * Time.fixedDeltaTime);
-			//rigidbody.velocity = (new Vector2 (directionX, directionY)) * speed;
-		}
+            positionTotal += (new Vector2(directionX, directionY)) * speed * Time.fixedDeltaTime;
+
+            //rigidbody.velocity = (new Vector2 (directionX, directionY)) * speed;
+        }
+
+        //add knockback to total
+        positionTotal += this.knockback;
+        UpdateKnockback();
+
+        //Move the Player
+        rigidbody.MovePosition(positionTotal);
 	}
+
+    public Vector2 GetDirection()
+    {
+        return this.direction;
+    }
+
+    private Vector2 knockback = new Vector2(0,0);
+    private float knockbackHalbzeit = 0.05f;
+    private float knockbackMinimum = 0.01f;
+
+    private void UpdateKnockback()
+    {
+        this.knockback *= Mathf.Pow(0.5f, Time.deltaTime / knockbackHalbzeit);
+
+        if (Mathf.Abs(knockback.x) < knockbackMinimum)
+            knockback.x = 0;
+
+        if (Mathf.Abs(knockback.y) < knockbackMinimum)
+            knockback.y = 0;
+    }
+
+    public void AddKnockback(Vector2 knockback)
+    {
+        this.knockback += knockback;
+    }
 }

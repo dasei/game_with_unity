@@ -8,6 +8,7 @@ abstract public class Waffe : MonoBehaviour {
     public float dmg;
     public DamageType dmgType;
     public float knockback;
+    private static float globalKnockbackMultiplier = 0.25f;
 
 	//number of frames the weapon strikes
 	public float hitTime;
@@ -44,13 +45,18 @@ abstract public class Waffe : MonoBehaviour {
     //<summary>
     //
     //</summary>
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Collision detected!");
         Entity entity = collision.gameObject.GetComponent<Entity>();
 
-        if(entity != null)        
-            entity.OnDamageTaken(this.GetDamageType(), dmg);        
+        if (entity != null)
+        {
+            //knockback entity
+            entity.OnKnockbackReceived(movement.GetDirection(), knockback * globalKnockbackMultiplier);
+
+            //damage entity
+            entity.OnDamageTaken(this.GetDamageType(), dmg);
+        }
     }
 
 }
