@@ -157,7 +157,7 @@ MonoBehaviour:
   immuneToDamage: 0
   immunityToDamageCooldownSeconds: 1.5
   immuneToKnockback: 0
-  immunityToKnockbackCooldownSeconds: 0.5
+  immunityToKnockbackCooldownSeconds: 0.25
 --- !u!114 &114516871811792936
 MonoBehaviour:
   m_ObjectHideFlags: 1

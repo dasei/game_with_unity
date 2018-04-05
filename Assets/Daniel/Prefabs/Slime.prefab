@@ -149,14 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062a375be7e6cff49a37ff2cc6ab64d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
+  movementSpeed: 1
   hp: 10
-  defense: 3
-  resistance: 1
+  defense: 1
+  resistance: 8
   immuneToDamage: 0
   immunityToDamageCooldownSeconds: 1.5
   immuneToKnockback: 0
-  immunityToKnockbackCooldownSeconds: 0.5
+  immunityToKnockbackCooldownSeconds: 0.25
 --- !u!114 &114529948944337606
 MonoBehaviour:
   m_ObjectHideFlags: 1

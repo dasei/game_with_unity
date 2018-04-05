@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 0
   dmgType: 0
-  knockback: 10
+  knockback: 1
   hitTime: 10
 --- !u!212 &212688534895808314
 SpriteRenderer:
