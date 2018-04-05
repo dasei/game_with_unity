@@ -139,8 +139,8 @@ MonoBehaviour:
   width: 100
   height: 100
   seed: Marco
-  useRandomSeed: 0
-  randomFillPercent: 41.7
+  useRandomSeed: 1
+  randomFillPercent: 46.3
   roomThresholdSize: 12
   wallThresholdSize: 5
 --- !u!4 &1451546484
