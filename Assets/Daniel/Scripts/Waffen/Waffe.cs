@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Movement))]
-public class Waffe : MonoBehaviour {
+abstract public class Waffe : MonoBehaviour {
 
     public float dmg;
+    public DamageType dmgType;
     public float knockback;
 
 	//number of frames the weapon strikes
 	public float hitTime;
 
 	private Movement movement;
+
+    abstract public DamageType GetDamageType();
+    public enum DamageType {Physical, Magic};
 
 	// Use this for initialization
 	protected void Start () {
@@ -36,4 +40,17 @@ public class Waffe : MonoBehaviour {
 		movement.moveAllowed = true;
 		GameObject.Destroy (this.gameObject);
 	}
+
+    //<summary>
+    //
+    //</summary>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Collision detected!");
+        Entity entity = collision.gameObject.GetComponent<Entity>();
+
+        if(entity != null)        
+            entity.OnDamageTaken(this.GetDamageType(), dmg);        
+    }
+
 }
