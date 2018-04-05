@@ -9,57 +9,56 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1255140628478580}
+  m_RootGameObject: {fileID: 1758031724092454}
   m_IsPrefabParent: 1
---- !u!1 &1255140628478580
+--- !u!1 &1758031724092454
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4460647095135018}
-  - component: {fileID: 50697160748090396}
-  - component: {fileID: 212260851009166520}
-  - component: {fileID: 61606743838235250}
-  - component: {fileID: 58969789674296182}
-  - component: {fileID: 60679488618134150}
-  - component: {fileID: 114067968210965780}
-  - component: {fileID: 114752452016116528}
-  - component: {fileID: 114516871811792936}
+  - component: {fileID: 4938281494506340}
+  - component: {fileID: 50618997386845190}
+  - component: {fileID: 212474586885304486}
+  - component: {fileID: 61772958408004886}
+  - component: {fileID: 58840177834900626}
+  - component: {fileID: 60493950010326074}
+  - component: {fileID: 114385233406287946}
+  - component: {fileID: 114529948944337606}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4460647095135018
+--- !u!4 &4938281494506340
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255140628478580}
+  m_GameObject: {fileID: 1758031724092454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.18, y: 0.16000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50697160748090396
+--- !u!50 &50618997386845190
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255140628478580}
+  m_GameObject: {fileID: 1758031724092454}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2.45
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -67,12 +66,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58969789674296182
+--- !u!58 &58840177834900626
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255140628478580}
+  m_GameObject: {fileID: 1758031724092454}
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
@@ -82,12 +81,12 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.06
---- !u!60 &60679488618134150
+--- !u!60 &60493950010326074
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255140628478580}
+  m_GameObject: {fileID: 1758031724092454}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -114,12 +113,12 @@ PolygonCollider2D:
       - {x: 0.45, y: 0}
       - {x: 0.3, y: 0.3}
       - {x: 0, y: 0.45}
---- !u!61 &61606743838235250
+--- !u!61 &61772958408004886
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255140628478580}
+  m_GameObject: {fileID: 1758031724092454}
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
@@ -139,55 +138,43 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &114067968210965780
+--- !u!114 &114385233406287946
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255140628478580}
+  m_GameObject: {fileID: 1758031724092454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c957fd1ed11e2004aae381df62fbbeae, type: 3}
+  m_Script: {fileID: 11500000, guid: 062a375be7e6cff49a37ff2cc6ab64d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4
+  movementSpeed: 1
   hp: 10
-  defense: 3
-  resistance: 1
+  defense: 1
+  resistance: 8
   immuneToDamage: 0
   immunityToDamageCooldownSeconds: 1.5
   immuneToKnockback: 0
   immunityToKnockbackCooldownSeconds: 0.25
---- !u!114 &114516871811792936
+--- !u!114 &114529948944337606
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255140628478580}
+  m_GameObject: {fileID: 1758031724092454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3adb43be8cf81148b09050e9a5ce89d, type: 3}
+  m_Script: {fileID: 11500000, guid: 41d2678f84dfef745bb5e181d75d3db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveAllowed: 1
---- !u!114 &114752452016116528
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255140628478580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41787795eaa51d24c9dd9d167e47a934, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 114401072574243162, guid: 2ba00e56a6f181445a7aa5a23c105b88, type: 2}
---- !u!212 &212260851009166520
+--- !u!212 &212474586885304486
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255140628478580}
+  m_GameObject: {fileID: 1758031724092454}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -216,7 +203,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300008, guid: 2351bc183cbb99147a6f255bc4c76e05, type: 3}
+  m_Sprite: {fileID: 21300006, guid: 2351bc183cbb99147a6f255bc4c76e05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
