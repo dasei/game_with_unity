@@ -51,7 +51,8 @@ public class Movement : MonoBehaviour {
 			}
 
 			//Move the Player
-			rigidbody.velocity = (new Vector2 (directionX, directionY)) * speed;
+			rigidbody.MovePosition(rigidbody.position + (new Vector2 (directionX, directionY)) * speed * Time.fixedDeltaTime);
+			//rigidbody.velocity = (new Vector2 (directionX, directionY)) * speed;
 		}
 	}
 }

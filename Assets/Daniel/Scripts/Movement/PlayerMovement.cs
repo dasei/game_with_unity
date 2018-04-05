@@ -10,6 +10,8 @@ public class PlayerMovement : Movement {
 
     //private float playerWidth, playerHeight;
 
+	private Vector2 velocity;
+
 	// Use this for initialization
 	void Start () {        
         attackBehavior = GetComponent<AttackBehavior>();
@@ -18,9 +20,14 @@ public class PlayerMovement : Movement {
 
     // Update is called once per frame
 	void Update () {
-		Move (entityScript.movementSpeed, Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
-		if (Input.GetKeyDown ("space")) {
+		velocity = (new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))).normalized;		
+
+        if (Input.GetKeyDown ("space")) {
 			attackBehavior.SpawnWeapon (direction);
 		}
+	}
+
+	void FixedUpdate(){
+		Move (entityScript.movementSpeed, velocity.x, velocity.y);
 	}
 }
