@@ -7,6 +7,7 @@ public class DungeonGeneratorScript : MonoBehaviour {
 
 	public GameObject Wall;
 	public GameObject Backgorund;
+	public GameObject Player;
 	public int width;
 	public int height;
 
@@ -35,6 +36,7 @@ public class DungeonGeneratorScript : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		GenerateNewCave ();
+		SpawnPlayer ();
 	}
 	
 	// Update is called once per frame
@@ -42,14 +44,22 @@ public class DungeonGeneratorScript : MonoBehaviour {
 		
 	}
 
-	void InstanciateWallObjects(){
+	void SpawnPlayer(){
+		List<List<Tile>> regions = GetRegions (0);
+		List<Tile> ground = regions [0];
+		int index = (int) UnityEngine.Random.Range (0, ground.Count);
+		Instantiate (Player, new Vector2 (ground [index].posX, ground [index].posY), Quaternion.identity);
+	}
+
+	void InstantiateWallObjects(){
+		GameObject level = GameObject.FindGameObjectWithTag("Level");
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				if (map [x, y] == 1) {
 					if (GetAdjacentTileCount (x, y, 0) > 0) {
-						GameObject.Instantiate (Wall, new Vector2 (x, y), Quaternion.identity);
+						GameObject.Instantiate (Wall, new Vector2 (x, y), Quaternion.identity, level.transform);
 					} else {
-						GameObject.Instantiate (Backgorund, new Vector2 (x, y), Quaternion.identity);
+						GameObject.Instantiate (Backgorund, new Vector2 (x, y), Quaternion.identity, level.transform);
 					}
 				}
 			}
@@ -237,7 +247,7 @@ public class DungeonGeneratorScript : MonoBehaviour {
 		}
 
 		//Instanciate all walls as Objects
-		InstanciateWallObjects ();
+		InstantiateWallObjects ();
 	}
 
 	//Fills the map completly random
