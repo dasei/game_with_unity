@@ -6,6 +6,7 @@ using System;
 public class DungeonGeneratorScript : MonoBehaviour {
 
 	public GameObject Wall;
+	public GameObject Backgorund;
 	public int width;
 	public int height;
 
@@ -45,10 +46,26 @@ public class DungeonGeneratorScript : MonoBehaviour {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				if (map [x, y] == 1) {
-					GameObject.Instantiate (Wall, new Vector2 (x, y), Quaternion.identity);
+					if (GetAdjacentTileCount (x, y, 0) > 0) {
+						GameObject.Instantiate (Wall, new Vector2 (x, y), Quaternion.identity);
+					} else {
+						GameObject.Instantiate (Backgorund, new Vector2 (x, y), Quaternion.identity);
+					}
 				}
 			}
 		}
+	}
+
+	int GetAdjacentTileCount(int x, int y, int tileType){
+		int count = 0;
+		for (int neighbourX = x - 1; neighbourX <= x + 1; neighbourX++) {
+			for (int neighbourY = y - 1; neighbourY <= y + 1; neighbourY++) {
+				if (IsInMapRange (neighbourX, neighbourY)) {
+					count += (map [neighbourX, neighbourY] == tileType) ? 1 : 0;
+				}
+			}
+		}
+		return count;
 	}
 
 	//Generates a new level, should be called once per scene
