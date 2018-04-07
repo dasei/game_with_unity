@@ -13,6 +13,10 @@ abstract public class Movement : MonoBehaviour {
 	private Vector2 preferredDirection = new Vector2(0,0);
 	public bool moveAllowed = true;
 
+	void FixedUpdate(){
+		PerformMovement ();
+	}
+
     abstract public void PerformMovement();
 
     //Diese Funktion muss genau einmal pro Frame aufgerufen werden!!!!!!11elf

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(SpriteRenderer))]
 abstract public class Waffe : MonoBehaviour {
 
     public float dmg;
@@ -14,6 +15,7 @@ abstract public class Waffe : MonoBehaviour {
 	public float hitTime;
 
 	private Movement movement;
+	private SpriteRenderer spriteRenderer;
 
     abstract public DamageType GetDamageType();
     public enum DamageType {Physical, Magic};
@@ -21,6 +23,8 @@ abstract public class Waffe : MonoBehaviour {
 	// Use this for initialization
 	protected void Start () {
 		movement = GetComponentInParent<Movement> ();
+		spriteRenderer = GetComponent<SpriteRenderer> ();
+		spriteRenderer.sortingLayerName = "Weapon/Projectile";
 		StartCoroutine (WaitAndDestroy ());
 	}
 	

@@ -8,6 +8,7 @@ public class DungeonGeneratorScript : MonoBehaviour {
 	public GameObject Wall;
 	public GameObject Backgorund;
 	public GameObject Player;
+	public GameObject Exit;
 	public int width;
 	public int height;
 
@@ -37,6 +38,7 @@ public class DungeonGeneratorScript : MonoBehaviour {
 	void Awake () {
 		GenerateNewCave ();
 		SpawnPlayer ();
+		SpawnExit ();
 	}
 	
 	// Update is called once per frame
@@ -49,6 +51,13 @@ public class DungeonGeneratorScript : MonoBehaviour {
 		List<Tile> ground = regions [0];
 		int index = (int) UnityEngine.Random.Range (0, ground.Count);
 		Instantiate (Player, new Vector2 (ground [index].posX, ground [index].posY), Quaternion.identity);
+	}
+
+	void SpawnExit(){
+		List<List<Tile>> regions = GetRegions (0);
+		List<Tile> ground = regions [0];
+		int index = (int) UnityEngine.Random.Range (0, ground.Count);
+		Instantiate (Exit, new Vector2 (ground [index].posX, ground [index].posY), Quaternion.identity);
 	}
 
 	void InstantiateWallObjects(){

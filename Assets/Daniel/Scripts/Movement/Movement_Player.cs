@@ -6,7 +6,7 @@ using UnityEngine;
 public class Movement_Player : Movement {
     
     private AttackBehavior attackBehavior;
-    private Entity entityScript;
+//    private Entity entityScript;
 
     //private float playerWidth, playerHeight;
 
@@ -15,19 +15,16 @@ public class Movement_Player : Movement {
 	// Use this for initialization
 	void Start () {        
         attackBehavior = GetComponent<AttackBehavior>();
-        entityScript = GetComponent<Entity>();
+ //       entityScript = GetComponent<Entity>();
     }
 
     public override void PerformMovement()
     {
 		velocity = (new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))).normalized;
+		Move (velocity.x, velocity.y, true);
 
         if (Input.GetKeyDown ("space")) {
 			attackBehavior.SpawnWeapon (direction);
 		}        
     }
-
-	void FixedUpdate(){
-		Move (velocity.x, velocity.y, true);
-	}
 }

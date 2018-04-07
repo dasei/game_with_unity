@@ -11,6 +11,6 @@ public class Entity_Player : Entity {
 
     public override void Update()
     {
-        GetComponent<Movement>().PerformMovement();
+        //GetComponent<Movement>().PerformMovement();
     } 
 }

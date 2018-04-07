@@ -166,6 +166,7 @@ MonoBehaviour:
   Wall: {fileID: 1040106526241266, guid: 2e2ca9f8d33f14c4dbe181421de1f49f, type: 2}
   Backgorund: {fileID: 1646856674676768, guid: 33f52f2e93362b84db67bbe0957e8b01, type: 2}
   Player: {fileID: 1255140628478580, guid: 759311e5931681f4dbb96a571febb3c1, type: 2}
+  Exit: {fileID: 1211453081951030, guid: 4b37e1e9a381b9f4baa1d5522f5ecd9f, type: 2}
   width: 100
   height: 50
   seed: Marco
